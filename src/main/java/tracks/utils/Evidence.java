@@ -18,7 +18,7 @@ public class Evidence extends BasePage {
     public Evidence (ChromeDriver driver) {
         super(driver);
     }
-    public static void takeEvidence (WebDriver driver, String name) throws DocumentException, IOException {
+    public static void takeEvidence(WebDriver driver, String name) throws DocumentException, IOException {
 
             String path = Config.path;
 
@@ -26,6 +26,7 @@ public class Evidence extends BasePage {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy.MM.dd-HH.mm.ss");
         LocalDateTime now = LocalDateTime.now();
         String timeStamp = dtf.format(now);
+
 
         //Handle screenshot
         TakesScreenshot evidence = ((TakesScreenshot)driver);
