@@ -4,13 +4,13 @@ public class Config {
 
     public static String getBaseUrl(){
 
-        return "http://localhost/";
+        return "http://jach.com.pl:8111";
 
     }
 
-    public static String user="admin";
-    public static String password="admin";
-    public static String path = "C:\\tests\\Screenshots\\";
+    public static String user="thisisadmin";
+    public static String password="plsletmein";
+    public static String path = "C:\\tests\\TracksApp\\Screenshots\\";
 
     }
 
