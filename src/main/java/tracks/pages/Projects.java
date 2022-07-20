@@ -45,6 +45,7 @@ public class Projects extends BasePage {
 
     public Projects addProject (String projectName, String projectDescription, String projectTag, Boolean evidence) throws IOException, DocumentException {
 
+        //POPULATE ADD PRODUCT FORM WITH VALID VALUES
         projectNameInput.sendKeys(projectName);
         projectDescriptionInput.sendKeys(projectDescription);
         projectTagInput.sendKeys(projectTag);
@@ -64,6 +65,8 @@ public class Projects extends BasePage {
             Evidence.takeEvidence(driver, "addProject - Details of a newly added project");
 
         }
+
+        // OPEN NEWLY ADDED PROJECT AND VERIFY ITS DETAILS
         Assert.assertEquals(projectNameView.getText(), projectName);
         Assert.assertEquals(projectDescriptionView.getText(), projectDescription);
         Assert.assertTrue(projectSettingsView.getText().contains(projectTag));
