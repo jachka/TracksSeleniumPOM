@@ -26,7 +26,7 @@ public class Config {
 
     public static String path = "C:\\tests\\TracksApp\\Screenshots\\";
 
-    /// IMPORT PASSWORD FROM FILE, HANDLE ENCODE/DECODE ///
+    /// IMPORT PASSWORD FROM FILE, HANDLE ENCODE/DECODE /// 
     private static String getEncodedPassword() throws IOException {
         BufferedReader reader;
 
