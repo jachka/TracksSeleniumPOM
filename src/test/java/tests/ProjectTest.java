@@ -16,4 +16,12 @@ public class ProjectTest extends BaseTest {
                 .goToProjects()
                 .addProject("This is project Name 05","This is description of test 05","tag5", true );
     }
+
+    @Test
+    public void verifyThatUserCanSortProjectsAlphabetically() throws IOException, DocumentException {
+        loginPage
+                .logIntoTheApp(Config.user, Config.password, false)
+                .goToProjects()
+                .sortProjectsAlphabetically(true);
+    }
 }
