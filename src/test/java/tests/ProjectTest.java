@@ -24,4 +24,13 @@ public class ProjectTest extends BaseTest {
                 .goToProjects()
                 .sortProjectsAlphabetically(true);
     }
+
+    @Test
+    public void verifyThatUserCanDeleteProject() throws IOException, DocumentException {
+        loginPage
+                .logIntoTheApp(Config.user, Config.password, false)
+                .goToProjects()
+                .addProject("Project to be deleted5","This is description of a project","some_tag4", false )
+                .deleteProject("Project to be deleted5", true);
+    }
 }

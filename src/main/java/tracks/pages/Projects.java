@@ -8,11 +8,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import tracks.utils.Config;
 import tracks.utils.Evidence;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 public class Projects extends BasePage {
@@ -36,6 +36,9 @@ public class Projects extends BasePage {
     @FindBy(id = "project_new_project_submit")
     WebElement addProjectButton;
 
+    @FindBy(xpath = "//a[contains(text(),'Projects')]")
+    WebElement goToProjects;
+
 /// VIEW PROJECT DETAILS PAGE ///
     @FindBy(xpath = "//span[@id='project_name']")
     WebElement projectNameView;
@@ -51,7 +54,7 @@ public class Projects extends BasePage {
     WebElement sortActiveProjectsAlphabeticallyButton;
 
 
-    public void addProject (String projectName, String projectDescription, String projectTag, Boolean evidence) throws IOException, DocumentException {
+    public Projects addProject (String projectName, String projectDescription, String projectTag, Boolean evidence) throws IOException, DocumentException {
 
         //POPULATE 'ADD PRODUCT' FORM WITH VALID VALUES
         projectNameInput.sendKeys(projectName);
@@ -78,6 +81,9 @@ public class Projects extends BasePage {
         Assert.assertEquals(projectDescriptionView.getText(), projectDescription);
         Assert.assertTrue(projectSettingsView.getText().contains(projectTag));
 
+        goToProjects.click();
+
+        return this;
     }
 
     public void sortProjectsAlphabetically (Boolean evidence) throws IOException, DocumentException {
@@ -109,6 +115,37 @@ public class Projects extends BasePage {
             Assert.assertEquals(projectListInitial[i], projectListSorted[i]);
         }
 
+    }
+
+    public Projects deleteProject (String projectName, Boolean evidence) throws IOException, DocumentException {
+
+        if (evidence) {
+            Evidence.takeEvidence(driver, "deleteProject - Project visible in the list");
+        }
+
+        //LOCALIZE PROPER PROJECT BY ITS NAME AND PRESS DELETE BUTTON, VERIFY ALERT TEXT
+        WebElement deleteButton = driver.findElement(By.xpath("//a[contains(text(),'"+projectName+"')]/../../../a[@class='delete_project_button icon']"));
+        deleteButton.click();
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.alertIsPresent());
+
+        Assert.assertEquals(driver.switchTo().alert().getText(), "Are you sure that you want to delete the project '"+projectName+"'?");
+
+        //SELECT ACCEPT ON THE ALERT ON VERIFY IF PROJECT IS NO LONGER DISPLAYED
+        driver.switchTo().alert().accept();
+
+        //WebElement loader = driver.findElement(By.xpath("//img[@src='/assets/waiting-82b6c6429c34d99bf12aed096572cc22.gif']"));
+        //WebDriverWait wait2 = new WebDriverWait(driver,5);
+        //wait2.until(ExpectedConditions.invisibilityOf(loader));
+
+        WebElement project = driver.findElement((By.xpath("//a[contains(text(),'"+projectName+"')]")));
+        Assert.assertTrue(project.isDisplayed());
+
+        if (evidence) {
+            Evidence.takeEvidence(driver, "deleteProject - Project successfully removed from the list");
+        }
+
+        return this;
     }
 
 }
