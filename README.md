@@ -4,6 +4,7 @@ Functional tests written using:
 - TestNG
 - Hamcrest (for better assertions)
 - Allure (for reporting)
-- Free time (for great fun :D)
+
+Continuous Integration using Jenkins
 
 Tested Application: Tracks (getontracks.org) version 2.3.0
