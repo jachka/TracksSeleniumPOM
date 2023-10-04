@@ -9,7 +9,7 @@ public class Config {
 
     public static String getBaseUrl(){
 
-        return "http://tracks.jach.com.pl:8111";
+        return "http://jach.com.pl:1337";
 
     }
 

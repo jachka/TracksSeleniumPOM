@@ -3,6 +3,7 @@ package tests;
 import com.itextpdf.text.DocumentException;
 import org.apache.logging.log4j.LogManager;
 import org.testng.annotations.Test;
+import org.testng.annotations.TestInstance;
 import tracks.utils.Config;
 
 import java.io.IOException;
