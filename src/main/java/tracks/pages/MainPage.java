@@ -10,6 +10,7 @@ import org.testng.Assert;
 import tracks.utils.Evidence;
 
 import java.io.IOException;
+import java.time.Duration;
 
 public class MainPage extends BasePage{
     public MainPage(ChromeDriver driver) {
@@ -29,7 +30,7 @@ public class MainPage extends BasePage{
     public void assertThatUserIsLoggedIn(String username, Boolean evidence) throws DocumentException, IOException {
 
         //Wait for element to appear
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(loggedInTxt));
 
         //Check if user logged in (expected text must be visible)
@@ -53,7 +54,7 @@ public class MainPage extends BasePage{
 
     public Projects goToProjects(){
         projects.click();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(projectsHeader));
         Assert.assertEquals(driver.getTitle(),PROJECTS_PAGE_TITLE);
 

@@ -13,6 +13,7 @@ import tracks.utils.Evidence;
 import java.lang.reflect.Method;
 
 import java.io.IOException;
+import java.time.Duration;
 
 
 public class LoginPage extends BasePage {
@@ -40,7 +41,7 @@ public class LoginPage extends BasePage {
 
 
         //Wait for elements to appear
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfAllElements(usernameTxtField, passwordTxtField, stayLoggedInCheckbox, signInButton));
 
         //Provide credentials
