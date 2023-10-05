@@ -7,6 +7,7 @@
     <profile>
         <id>TracksTestSuite</id>
         <build>
+            <defaultGoal>install</defaultGoal>
             <pluginManagement>
                 <plugins>
                     <plugin>
