@@ -26,7 +26,7 @@ public class BaseTest {
     @BeforeClass
     public void beforeClass() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();\
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--log-level=DEBUG");
         options.addArguments("--headless");
         options.addArguments("--remote-allow-origins=*");
