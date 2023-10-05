@@ -26,7 +26,9 @@ public class BaseTest {
     @BeforeClass
     public void beforeClass() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
+        ChromeOptions options = new ChromeOptions();\
+        options.addArguments("--log-level=DEBUG");
+        options.addArguments("--headless");
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("start-maximized"); // https://stackoverflow.com/a/26283818/1689770
         options.addArguments("enable-automation"); // https://stackoverflow.com/a/43840128/1689770
