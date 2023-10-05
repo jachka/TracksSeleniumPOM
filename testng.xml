@@ -1,11 +1,11 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="RegressionSuite" verbose="1" >
+<suite name="TracksTestSuite" verbose="1" >
     <test name="LoginTests" >
         <classes>
             <class name="tests.LoginTest">
                 <methods>
-                    <include name="verifyThatUserCanLogInUsingValidCredentials" />
+                    <include name="verifyThatUserCannotLoginWithInvalidCredentials" />
                 </methods>
             </class>
         </classes>
