@@ -24,13 +24,13 @@ public class Config {
         }
     }
 
-    public static String path = "\\";
+    public static String path = "C:\\tests\\TracksApp\\Screenshots\\";
 
     /// IMPORT PASSWORD FROM FILE, HANDLE ENCODE/DECODE /// 
     private static String getEncodedPassword() throws IOException {
         BufferedReader reader;
 
-        reader = new BufferedReader(new FileReader("C:\\tests\\TracksApp\\tracks_cred.txt"));
+        reader = new BufferedReader(new FileReader("tracks_cred.txt"));
         String line;
         line = reader.readLine();
 
